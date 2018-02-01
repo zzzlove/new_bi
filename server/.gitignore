@@ -1,0 +1,5 @@
+dist
+public
+sessions
+node_modules
+npm-debug.log

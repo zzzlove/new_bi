@@ -1,0 +1,110 @@
+{
+  "authConfig": {
+    "adminDefault": {
+      "username": "admin",
+      "password": "admin",
+      "roles": "[\"admin\"]"
+    }
+  },
+  "dbConfig": {
+    "host": "123.59.72.168",
+    "port": 60006,
+    "dbName": "bi",
+    "user": "bipg",
+    "password": "hqzb1hTDHnewbi",
+    "dialect": "postgres",
+    "options": {
+      "pool": {
+        "max": 5,
+        "min": 0,
+        "idle": 10000
+      },
+      "logging": false
+    }
+  },
+  "gqlConfig": {
+    "supportSubscription": true,
+    "subscriptionAuthWithConnectionParams": false
+  },
+  "redisConfig" : {
+    "host" : "192.168.71.96",
+    //"host" : "127.0.0.1",
+    "port" : "6379",
+    "ttl" : 1800,
+    "logErrors" : true
+  },
+  "uiConfig": {
+    "menu": {
+      "admin": {
+        "dashboard": 0,
+        "user": 1,
+        "control_center_kh": 2,
+        "client_kh": 3,
+        "biz_analysis": 4,
+        "kh_rpt_headoffice": 5,        
+        "order_list": 6,
+        "testing_ok": 7,
+        "testing": 8,
+        "hr_headoffice": 9,
+        "user_props": 10,
+        "bizDA": 11,
+        "excel": 12,
+        "pricing": 14,
+        "pricingPud": 14,
+        "bizSetting": 15,   
+        "kpiMgmt": 16, 
+        "kpiSummary": 17, 
+        "entryManualInput": 13,
+        "bizUkDA": 30,
+        "bizDAAll":31
+      },
+      "headoffice_kh": {
+        "dashboard": 0,
+        "control_center_kh": 2,
+        "client_kh": 3,
+        "biz_analysis": 4,
+        "bizDA": 11,
+        //"kh_rpt_headoffice": 5,
+        "order_list": 6,
+        "entryManualInput": 13
+      },
+      "kh_admin": {
+        "dashboard": 0,
+        "control_center_kh": 2,
+        "client_kh": 3,
+        "biz_analysis": 4,
+        "bizDA": 11,
+        "pricing": 14,
+        "pricingPud": 14,
+        "bizSetting": 15, 
+        "order_list": 6,
+        "kpiMgmt": 16, 
+        "kpiSummary": 17, 
+        "entryManualInput": 13
+      },
+      "uk_admin": {
+        "bizUkDA": 30
+      },
+      "ops_kh": {
+        "dashboard": 0,
+        "order_list": 1,
+        "bizDA": 2
+      },
+      "headoffice_hr": {
+        "hr_headoffice": 0
+      },
+      "*": {
+        "dashboard": 0,
+        "userboard": 1
+      }
+    },
+    "dashboard": {
+      "admin": {
+        "greeting": "Hello admin"
+      },
+      "*": {
+        "greeting": "Hello user"
+      }
+    }
+  }
+}

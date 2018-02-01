@@ -1,0 +1,33 @@
+{
+  "routes": {
+    "requireLogin": [
+      "!/_api/public/*",
+      "/_api/*",
+      "/graphql*",
+      "/graphiql*"
+    ],
+    "requireAdminRole": [
+      "/graphiql*",
+      "/_api/user/list*",
+      "/_api/user/add*",
+      "/_api/user/remove*"
+    ]
+  },
+  "gql": {
+    "query": {
+      "requireAdminRole": [
+      ]
+    },
+    "mutation": {
+      "requireAdminRole": [
+        "addChannel"
+      ]
+    },
+    "subscription": {
+      "requireAdminRole": [
+        "channelAdded",
+        "channelRemoved"
+      ]
+    }
+  }
+}

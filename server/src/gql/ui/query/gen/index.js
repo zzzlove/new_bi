@@ -1,0 +1,4 @@
+
+var uiGeneratedQueryDefs = [];
+
+export { uiGeneratedQueryDefs };

@@ -1,0 +1,3 @@
+var uiGeneratedSubscriptionDefs = [];
+
+export { uiGeneratedSubscriptionDefs };

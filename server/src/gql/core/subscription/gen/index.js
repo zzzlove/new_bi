@@ -1,0 +1,3 @@
+var coreGeneratedSubscriptionDefs = [];
+
+export { coreGeneratedSubscriptionDefs };

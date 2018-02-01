@@ -1,0 +1,49 @@
+{
+  "name": "gql-fast-server",
+  "version": "1.0.0",
+  "description": "A production ready GraphQL server",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon --watch src --watch config src/index.js --exec babel-node",
+    "codegen": "babel-node scripts/codegen.js",
+    "reset": "babel-node scripts/reset.js",
+    "build": "babel src -d dist",
+    "serve": "node dist/index.js",
+    "test": "mocha --compilers js:babel-register"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "config": "^1.25.1",
+    "connect-redis": "^3.3.2",
+    "cors": "^2.8.3",
+    "ejs": "^2.5.6",
+    "excel-export": "^0.5.1",
+    "express": "^4.15.2",
+    "express-session": "^1.15.2",
+    "graphql": "^0.9.5",
+    "graphql-server-express": "^0.7.2",
+    "graphql-tools": "^0.11.0",
+    "graphql-type-json": "^0.1.4",
+    "node-uuid": "^1.4.8",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "pg": "^6.1.5",
+    "pg-hstore": "^2.3.2",
+    "redis": "^2.8.0",
+    "sequelize": "^4.7.5",
+    "session-file-store": "^1.0.0",
+    "subscriptions-transport-ws": "^0.5.5",
+    "tedious": "^2.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-register": "^6.24.1",
+    "mocha": "^3.3.0",
+    "nodemon": "^1.11.0"
+  }
+}

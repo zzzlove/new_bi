@@ -1,0 +1,3 @@
+var biGeneratedSubscriptionDefs = [];
+
+export { biGeneratedSubscriptionDefs };

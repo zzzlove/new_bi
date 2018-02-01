@@ -1,0 +1,1198 @@
+import Sequelize from 'sequelize';
+
+import { dbService } from '../../../service/core';
+
+const Pricing = dbService.define('pricing', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ name: {type: Sequelize.STRING},
+ profile_id: {type: Sequelize.INTEGER},
+ type: {type: Sequelize.STRING},
+ sub_type: {type: Sequelize.STRING},
+ status: {type: Sequelize.STRING},
+ service_id: {type: Sequelize.INTEGER},
+ service_code: {type: Sequelize.STRING},
+ dest_id: {type: Sequelize.INTEGER},
+ dest_code: {type: Sequelize.STRING},
+ unit_method: {type: Sequelize.STRING},
+ qty_unit: {type: Sequelize.DECIMAL(14,2)},
+ ftl_unit: {type: Sequelize.DECIMAL(14,2)},
+ weight_unit: {type: Sequelize.DECIMAL(14,2)},
+ volume_unit: {type: Sequelize.DECIMAL(14,2)},
+ internal_discount: {type: Sequelize.DECIMAL(14,2)},
+ started_at: {type: Sequelize.DATE},
+ finished_at: {type: Sequelize.DATE},
+ created_at: {type: Sequelize.DATE},
+ updated_at: {type: Sequelize.DATE},
+ deleted_at: {type: Sequelize.DATE},
+ created_by: {type: Sequelize.STRING},
+ started_by: {type: Sequelize.STRING},
+ finished_by: {type: Sequelize.STRING},
+ remarks: {type: Sequelize.STRING}
+}, {
+ tableName: 'pricing', timestamps: true, underscored: true, schema: 'sd', paranoid: true
+});
+
+const ControlCenterAlterType = dbService.define('control_center_alter_type', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ defs_no: {type: Sequelize.STRING},
+ fit_area: {type: Sequelize.STRING},
+ amount_start: {type: Sequelize.DECIMAL(14,2)},
+ amount_finish: {type: Sequelize.DECIMAL(14,2)},
+ alter_type: {type: Sequelize.STRING},
+ xorder: {type: Sequelize.INTEGER}
+}, {
+ tableName: 'control_center_alter_type', timestamps: false, underscored: true, schema: 'md'
+});
+
+const OrderSalesExtKh = dbService.define('order_sales_ext_kh', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ order_no: {type: Sequelize.STRING},
+ type: {type: Sequelize.STRING},
+ biz_code: {type: Sequelize.STRING},
+ profile_id: {type: Sequelize.INTEGER},
+ ops_id: {type: Sequelize.INTEGER},
+ fin_code: {type: Sequelize.STRING},
+ ops_code: {type: Sequelize.STRING},
+ sales_code: {type: Sequelize.STRING},
+ profile_name: {type: Sequelize.STRING},
+ trader_id: {type: Sequelize.INTEGER},
+ trader_code: {type: Sequelize.STRING},
+ trader_name: {type: Sequelize.STRING},
+ payment_method: {type: Sequelize.STRING},
+ payment_period: {type: Sequelize.STRING},
+ billing_id: {type: Sequelize.INTEGER},
+ status: {type: Sequelize.STRING},
+ processing_status: {type: Sequelize.STRING},
+ is_internal: {type: Sequelize.BOOLEAN},
+ started_at: {type: Sequelize.DATE},
+ finished_at: {type: Sequelize.DATE},
+ remarks: {type: Sequelize.STRING},
+ created_at: {type: Sequelize.DATE},
+ updated_at: {type: Sequelize.DATE},
+ deleted_at: {type: Sequelize.DATE},
+ term: {type: Sequelize.STRING},
+ billing_no: {type: Sequelize.STRING},
+ amount: {type: Sequelize.DECIMAL(14,2)},
+ biz_type: {type: Sequelize.STRING},
+ locked_status: {type: Sequelize.STRING},
+ service_no: {type: Sequelize.STRING},
+ voucher_id: {type: Sequelize.INTEGER},
+ voucher_status: {type: Sequelize.STRING},
+ reflection_id: {type: Sequelize.INTEGER},
+ control_center: {type: Sequelize.STRING},
+ related_no: {type: Sequelize.STRING},
+ control_element: {type: Sequelize.STRING},
+ is_deleted: {type: Sequelize.INTEGER},
+ billing_status: {type: Sequelize.STRING},
+ amount_acc: {type: Sequelize.DECIMAL(14,2)},
+ gross_margin: {type: Sequelize.DECIMAL(14,2)},
+ equipment_no: {type: Sequelize.STRING},
+ data_f: {type: Sequelize.DECIMAL(14,2)},
+ status_desc: {type: Sequelize.STRING},
+ bi_status: {type: Sequelize.STRING},
+ control_center_id: {type: Sequelize.INTEGER},
+ ext_iid: {type: Sequelize.INTEGER},
+ ext_cid: {type: Sequelize.STRING},
+ data_source: {type: Sequelize.STRING},
+ status_1: {type: Sequelize.STRING},
+ status_2: {type: Sequelize.STRING},
+ days_open: {type: Sequelize.INTEGER},
+ temp_1: {type: Sequelize.STRING},
+ temp_2: {type: Sequelize.STRING},
+ temp_3: {type: Sequelize.STRING},
+ status_syn: {type: Sequelize.STRING},
+ control_center_pid: {type: Sequelize.INTEGER},
+ t_run: {type: Sequelize.STRING},
+ bi_element: {type: Sequelize.STRING},
+ bi_2nd: {type: Sequelize.STRING},
+ cat_1st: {type: Sequelize.STRING},
+ cat_2nd: {type: Sequelize.STRING},
+ depart_branch_id: {type: Sequelize.INTEGER},
+ target_branch_id: {type: Sequelize.INTEGER},
+ trader_id_act: {type: Sequelize.INTEGER},
+ trader_code_act: {type: Sequelize.STRING},
+ trader_name_act: {type: Sequelize.STRING},
+ depart_no: {type: Sequelize.STRING},
+ cargo_name: {type: Sequelize.STRING},
+ cargo_weight: {type: Sequelize.DECIMAL(14,2)},
+ cargo_volumn: {type: Sequelize.DECIMAL(14,2)},
+ cargo_count: {type: Sequelize.INTEGER},
+ plate_no: {type: Sequelize.STRING},
+ carrier_id: {type: Sequelize.INTEGER},
+ carrier_code: {type: Sequelize.STRING},
+ carrier_name: {type: Sequelize.STRING},
+ manager_id: {type: Sequelize.INTEGER},
+ manager_code: {type: Sequelize.STRING},
+ manager_name: {type: Sequelize.STRING},
+ plate_no1: {type: Sequelize.STRING},
+ remark: {type: Sequelize.STRING},
+ depart_id: {type: Sequelize.STRING},
+ fin_id: {type: Sequelize.INTEGER},
+ sales_id: {type: Sequelize.INTEGER},
+ branch_id: {type: Sequelize.INTEGER},
+ line_id: {type: Sequelize.INTEGER},
+ line_name: {type: Sequelize.STRING},
+ consignee_code: {type: Sequelize.STRING},
+ consignee_name: {type: Sequelize.STRING},
+ depart_time: {type: Sequelize.DATE},
+ arrived_time: {type: Sequelize.DATE},
+ plan_depart_time: {type: Sequelize.DATE},
+ plan_arrived_time: {type: Sequelize.DATE},
+ dest_id: {type: Sequelize.INTEGER},
+ depart_city_id: {type: Sequelize.INTEGER},
+ target_city_id: {type: Sequelize.INTEGER},
+ qty: {type: Sequelize.INTEGER},
+ weight: {type: Sequelize.INTEGER},
+ volume: {type: Sequelize.DECIMAL(14,2)},
+ trans_type_cd: {type: Sequelize.STRING},
+ trans_type: {type: Sequelize.STRING},
+ clean_freight: {type: Sequelize.DECIMAL(14,2)},
+ declare_value: {type: Sequelize.DECIMAL(14,2)},
+ insured_rates: {type: Sequelize.DECIMAL(14,2)},
+ insured: {type: Sequelize.DECIMAL(14,2)},
+ remote_pickup_charges: {type: Sequelize.DECIMAL(14,2)},
+ remote_delivery_charges: {type: Sequelize.DECIMAL(14,2)},
+ multipoint_pickup_charges: {type: Sequelize.DECIMAL(14,2)},
+ multipoint_delivery_charges: {type: Sequelize.DECIMAL(14,2)},
+ charge_data: {type: Sequelize.JSON}
+}, {
+ tableName: 'order_sales_ext_kh', timestamps: true, underscored: true, schema: 'sd', paranoid: true
+});
+
+const MemberCatService = dbService.define('member_cat_service', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ member_id: {type: Sequelize.INTEGER},
+ service_id: {type: Sequelize.INTEGER},
+ member_name: {type: Sequelize.STRING},
+ service_name: {type: Sequelize.STRING},
+ type: {type: Sequelize.STRING},
+ t_run: {type: Sequelize.STRING},
+ cat_1st: {type: Sequelize.STRING},
+ cat_2nd: {type: Sequelize.STRING},
+ cat_3rd: {type: Sequelize.STRING},
+ date1: {type: Sequelize.DATE},
+ date2: {type: Sequelize.DATE},
+ int1: {type: Sequelize.INTEGER},
+ int2: {type: Sequelize.INTEGER},
+ int3: {type: Sequelize.INTEGER},
+ char1: {type: Sequelize.STRING},
+ char2: {type: Sequelize.STRING},
+ bi_element: {type: Sequelize.STRING},
+ bi_contral_center_id: {type: Sequelize.INTEGER},
+ bi_contral_center_name: {type: Sequelize.STRING},
+ data_f: {type: Sequelize.INTEGER},
+ int4: {type: Sequelize.INTEGER},
+ num1: {type: Sequelize.DECIMAL(14,2)}
+}, {
+ tableName: 'member_cat_service', timestamps: false, underscored: true, schema: 'md'
+});
+
+const SessionLog = dbService.define('session_log', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ user_name: {type: Sequelize.STRING},
+ model: {type: Sequelize.STRING},
+ create_at: {type: Sequelize.DATEONLY},
+ token: {type: Sequelize.STRING},
+ is_active: {type: Sequelize.INTEGER},
+ active_time: {type: Sequelize.INTEGER}
+}, {
+ tableName: 'session_log', timestamps: false, underscored: true, freezeTableName: true, schema: 'ps'
+});
+
+const FinCodeActual = dbService.define('fin_code_actual', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ fin_code_id: {type: Sequelize.INTEGER},
+ t_run: {type: Sequelize.STRING},
+ type: {type: Sequelize.STRING},
+ t_time: {type: Sequelize.DATE},
+ amount: {type: Sequelize.DECIMAL(14,2)},
+ count: {type: Sequelize.INTEGER},
+ amount_avg: {type: Sequelize.DECIMAL(14,2)},
+ amount_acc: {type: Sequelize.DECIMAL(14,2)},
+ t_run_gr: {type: Sequelize.STRING},
+ amount_budget_acc: {type: Sequelize.DECIMAL(14,2)},
+ amount_budget: {type: Sequelize.DECIMAL(14,2)},
+ amount_compared: {type: Sequelize.DECIMAL(14,2)},
+ amount_compared1: {type: Sequelize.DECIMAL(14,2)},
+ amount_compared2: {type: Sequelize.DECIMAL(14,2)},
+ count_distinct: {type: Sequelize.INTEGER},
+ record_type: {type: Sequelize.STRING},
+ pct: {type: Sequelize.DECIMAL(14,2)},
+ xorder: {type: Sequelize.INTEGER},
+ fin_code: {type: Sequelize.STRING},
+ status: {type: Sequelize.STRING},
+ remarks: {type: Sequelize.TEXT},
+ data_set: {type: Sequelize.STRING},
+ count_pct: {type: Sequelize.DECIMAL(14,2)},
+ yoy_compared: {type: Sequelize.DECIMAL(14,2)},
+ pop_compared: {type: Sequelize.DECIMAL(14,2)},
+ control_center_id: {type: Sequelize.INTEGER},
+ control_center_pid: {type: Sequelize.INTEGER},
+ count_avg: {type: Sequelize.DECIMAL(14,2)},
+ count_p50: {type: Sequelize.DECIMAL(14,2)},
+ data_f: {type: Sequelize.ARRAY(Sequelize.INTEGER)}
+}, {
+ tableName: 'fin_code_actual', timestamps: false, underscored: true, schema: 'md'
+});
+
+const Account = dbService.define('account', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ code: {type: Sequelize.STRING},
+ type: {type: Sequelize.STRING},
+ name: {type: Sequelize.STRING},
+ parent_id: {type: Sequelize.INTEGER},
+ sub_type: {type: Sequelize.STRING},
+ concerning_biz: {type: Sequelize.ARRAY(Sequelize.STRING)}
+}, {
+ tableName: 'account', timestamps: false, underscored: true, schema: 'fi'
+});
+
+const ControlCenterRm = dbService.define('control_center_rm', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ rm_type: {type: Sequelize.STRING},
+ children_id: {type: Sequelize.INTEGER},
+ control_center_id: {type: Sequelize.INTEGER}
+}, {
+ tableName: 'control_center_rm', timestamps: false, underscored: true, schema: 'md'
+});
+
+const RmExtOrderBilling = dbService.define('rm_ext_order_billing', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ data_source: {type: Sequelize.STRING},
+ billing_no: {type: Sequelize.STRING},
+ link_id: {type: Sequelize.INTEGER},
+ billing_id: {type: Sequelize.INTEGER},
+ order_id: {type: Sequelize.INTEGER},
+ order_no: {type: Sequelize.STRING},
+ ext_iid: {type: Sequelize.INTEGER},
+ ext_cid: {type: Sequelize.STRING},
+ created_at: {type: Sequelize.DATE},
+ updated_at: {type: Sequelize.DATE},
+ deleted_at: {type: Sequelize.DATE},
+ is_deleted: {type: Sequelize.INTEGER},
+ ext_billing_id: {type: Sequelize.INTEGER}
+}, {
+ tableName: 'rm_ext_order_billing', timestamps: true, underscored: true, schema: 'sd', paranoid: true
+});
+
+const OpsCodeActual = dbService.define('ops_code_actual', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ fin_code_id: {type: Sequelize.INTEGER},
+ t_run: {type: Sequelize.STRING},
+ type: {type: Sequelize.STRING},
+ t_time: {type: Sequelize.DATE},
+ amount: {type: Sequelize.DECIMAL(14,2)},
+ count: {type: Sequelize.INTEGER},
+ amount_avg: {type: Sequelize.DECIMAL(14,2)},
+ amount_acc: {type: Sequelize.DECIMAL(14,2)},
+ t_run_gr: {type: Sequelize.STRING},
+ amount_budget_acc: {type: Sequelize.DECIMAL(14,2)},
+ amount_budget: {type: Sequelize.DECIMAL(14,2)},
+ amount_compared: {type: Sequelize.DECIMAL(14,2)},
+ amount_compared1: {type: Sequelize.DECIMAL(14,2)},
+ amount_compared2: {type: Sequelize.DECIMAL(14,2)},
+ count_distinct: {type: Sequelize.INTEGER},
+ record_type: {type: Sequelize.STRING},
+ pct: {type: Sequelize.DECIMAL(14,2)},
+ xorder: {type: Sequelize.INTEGER},
+ ops_code: {type: Sequelize.STRING},
+ status: {type: Sequelize.STRING},
+ remarks: {type: Sequelize.TEXT},
+ data_set: {type: Sequelize.STRING},
+ count_pct: {type: Sequelize.DECIMAL(14,2)},
+ yoy_compared: {type: Sequelize.DECIMAL(14,2)},
+ pop_compared: {type: Sequelize.DECIMAL(14,2)},
+ control_center_id: {type: Sequelize.INTEGER},
+ control_center_pid: {type: Sequelize.INTEGER},
+ count_avg: {type: Sequelize.DECIMAL(14,2)},
+ count_p50: {type: Sequelize.DECIMAL(14,2)},
+ data_f: {type: Sequelize.ARRAY(Sequelize.INTEGER)}
+}, {
+ tableName: 'ops_code_actual', timestamps: false, underscored: true, schema: 'md'
+});
+
+const FieldOption = dbService.define('field_option', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ option_id: {type: Sequelize.INTEGER},
+ value: {type: Sequelize.STRING},
+ value_parent: {type: Sequelize.STRING},
+ text: {type: Sequelize.STRING},
+ text_ml: {type: Sequelize.JSONB},
+ function_desc: {type: Sequelize.STRING},
+ value_level: {type: Sequelize.INTEGER},
+ disabled: {type: Sequelize.BOOLEAN},
+ script_out: {type: Sequelize.TEXT},
+ children: {type: Sequelize.JSON},
+ option_code: {type: Sequelize.STRING},
+ xorder: {type: Sequelize.INTEGER}
+}, {
+ tableName: 'field_option', timestamps: false, underscored: true, schema: 'ps'
+});
+
+const ElementAuth = dbService.define('element_auth', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ frame_id: {type: Sequelize.INTEGER},
+ element_id: {type: Sequelize.INTEGER},
+ role_applied: {type: Sequelize.STRING},
+ element_code: {type: Sequelize.STRING},
+ permitted: {type: Sequelize.BOOLEAN},
+ created_at: {type: Sequelize.DATE},
+ updated_at: {type: Sequelize.DATE},
+ deleted_at: {type: Sequelize.DATE},
+ type: {type: Sequelize.STRING},
+ client_id: {type: Sequelize.INTEGER}
+}, {
+ tableName: 'element_auth', timestamps: true, underscored: true, schema: 'ss', paranoid: true
+});
+
+const SignClientDayMonitoring = dbService.define('sign_client_day_monitoring', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ route_id: {type: Sequelize.INTEGER},
+ route_name: {type: Sequelize.STRING},
+ line_id: {type: Sequelize.INTEGER},
+ line_name: {type: Sequelize.STRING},
+ plan_team: {type: Sequelize.DECIMAL(14,2)},
+ single_team_conf: {type: Sequelize.INTEGER},
+ truck_head_num: {type: Sequelize.INTEGER},
+ deploy_team_num: {type: Sequelize.DECIMAL(14,2)},
+ trader_name: {type: Sequelize.STRING},
+ act_shp_num: {type: Sequelize.INTEGER},
+ shipment_date: {type: Sequelize.STRING},
+ created_time_at: {type: Sequelize.DATE}
+}, {
+ tableName: 'sign_client_day_monitoring', timestamps: false, underscored: true, schema: 'md'
+});
+
+const OrderOpsExtUk = dbService.define('order_ops_ext_uk', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ order_no: {type: Sequelize.STRING},
+ type: {type: Sequelize.STRING},
+ biz_code: {type: Sequelize.STRING},
+ profile_id: {type: Sequelize.INTEGER},
+ ops_id: {type: Sequelize.INTEGER},
+ fin_code: {type: Sequelize.STRING},
+ ops_code: {type: Sequelize.STRING},
+ sales_code: {type: Sequelize.STRING},
+ profile_name: {type: Sequelize.STRING},
+ trader_id: {type: Sequelize.INTEGER},
+ trader_code: {type: Sequelize.STRING},
+ trader_name: {type: Sequelize.STRING},
+ payment_method: {type: Sequelize.STRING},
+ payment_period: {type: Sequelize.STRING},
+ billing_id: {type: Sequelize.INTEGER},
+ status: {type: Sequelize.STRING},
+ processing_status: {type: Sequelize.STRING},
+ is_internal: {type: Sequelize.BOOLEAN},
+ started_at: {type: Sequelize.DATE},
+ finished_at: {type: Sequelize.DATE},
+ remarks: {type: Sequelize.STRING},
+ created_at: {type: Sequelize.DATE},
+ updated_at: {type: Sequelize.DATE},
+ deleted_at: {type: Sequelize.DATE},
+ term: {type: Sequelize.STRING},
+ billing_no: {type: Sequelize.STRING},
+ amount: {type: Sequelize.DECIMAL(14,2)},
+ biz_type: {type: Sequelize.STRING},
+ locked_status: {type: Sequelize.STRING},
+ service_no: {type: Sequelize.STRING},
+ voucher_id: {type: Sequelize.INTEGER},
+ voucher_status: {type: Sequelize.STRING},
+ reflection_id: {type: Sequelize.INTEGER},
+ control_center: {type: Sequelize.STRING},
+ related_no: {type: Sequelize.STRING},
+ control_element: {type: Sequelize.STRING},
+ is_deleted: {type: Sequelize.INTEGER},
+ billing_status: {type: Sequelize.STRING},
+ amount_acc: {type: Sequelize.DECIMAL(14,2)},
+ gross_margin: {type: Sequelize.DECIMAL(14,2)},
+ equipment_no: {type: Sequelize.STRING},
+ data_f: {type: Sequelize.DECIMAL(14,2)},
+ status_desc: {type: Sequelize.STRING},
+ bi_status: {type: Sequelize.STRING},
+ control_center_id: {type: Sequelize.INTEGER},
+ ext_iid: {type: Sequelize.INTEGER},
+ ext_cid: {type: Sequelize.STRING},
+ distance: {type: Sequelize.INTEGER},
+ ops_method: {type: Sequelize.STRING},
+ ops_owner: {type: Sequelize.STRING},
+ status_syn: {type: Sequelize.STRING},
+ control_center_pid: {type: Sequelize.INTEGER},
+ t_run: {type: Sequelize.STRING},
+ bi_element: {type: Sequelize.STRING},
+ bi_2nd: {type: Sequelize.STRING},
+ cat_1st: {type: Sequelize.STRING},
+ cat_2nd: {type: Sequelize.STRING},
+ shunt_branch: {type: Sequelize.INTEGER},
+ tk_id: {type: Sequelize.INTEGER},
+ tktype_cd: {type: Sequelize.STRING},
+ plate_no: {type: Sequelize.STRING},
+ driver_name: {type: Sequelize.STRING},
+ driver_tel: {type: Sequelize.STRING},
+ paid_type: {type: Sequelize.STRING},
+ driver_paid_charge: {type: Sequelize.DECIMAL(14,2)},
+ shunt_branch_charge: {type: Sequelize.DECIMAL(14,2)},
+ cash: {type: Sequelize.DECIMAL(14,2)},
+ bank_card: {type: Sequelize.DECIMAL(14,2)},
+ petroleum_card: {type: Sequelize.DECIMAL(14,2)},
+ fuel_charge: {type: Sequelize.DECIMAL(14,2)},
+ etc: {type: Sequelize.DECIMAL(14,2)},
+ service_charge_rate: {type: Sequelize.DECIMAL(14,2)},
+ planned_arrival_date: {type: Sequelize.DATE},
+ actual_arrival_date: {type: Sequelize.DATE},
+ resource_check: {type: Sequelize.STRING},
+ resource_check_by: {type: Sequelize.STRING},
+ shunt_subsidy: {type: Sequelize.DECIMAL(14,2)},
+ remark: {type: Sequelize.STRING},
+ resource_check_time: {type: Sequelize.DATE},
+ operation_check: {type: Sequelize.STRING},
+ operation_check_by: {type: Sequelize.STRING},
+ operation_check_time: {type: Sequelize.DATE},
+ version: {type: Sequelize.INTEGER},
+ driver_collection_charge: {type: Sequelize.DECIMAL(14,2)},
+ driver_payment_charge: {type: Sequelize.DECIMAL(14,2)},
+ driver_returned_fee: {type: Sequelize.DECIMAL(14,2)},
+ driver_remain_fee: {type: Sequelize.DECIMAL(14,2)},
+ driver_should_fee: {type: Sequelize.DECIMAL(14,2)},
+ driver_already_fee: {type: Sequelize.DECIMAL(14,2)},
+ driver_debt_fee: {type: Sequelize.DECIMAL(14,2)},
+ print: {type: Sequelize.INTEGER},
+ inform: {type: Sequelize.INTEGER},
+ collection_fee: {type: Sequelize.DECIMAL(14,2)},
+ payment_fee: {type: Sequelize.DECIMAL(14,2)},
+ branch_surplus_fee: {type: Sequelize.DECIMAL(14,2)},
+ unload_charge: {type: Sequelize.DECIMAL(14,2)},
+ load_charge: {type: Sequelize.DECIMAL(14,2)},
+ shunt_volume_charge: {type: Sequelize.DECIMAL(14,2)},
+ shunt_car_charge: {type: Sequelize.DECIMAL(14,2)},
+ load_quantity_total: {type: Sequelize.INTEGER},
+ load_weight_total: {type: Sequelize.DECIMAL(14,2)},
+ load_volume_total: {type: Sequelize.DECIMAL(14,2)},
+ load_ship_amount: {type: Sequelize.INTEGER},
+ depart_type_cd: {type: Sequelize.STRING},
+ flight_no: {type: Sequelize.STRING},
+ total_charge_total: {type: Sequelize.DECIMAL(14,2)},
+ rebate_total: {type: Sequelize.DECIMAL(14,2)},
+ actual_charge_total: {type: Sequelize.DECIMAL(14,2)},
+ unload_time: {type: Sequelize.DATE},
+ d_driver_name: {type: Sequelize.STRING},
+ d_driver_tel: {type: Sequelize.STRING}
+}, {
+ tableName: 'order_ops_ext_uk', timestamps: true, underscored: true, schema: 'sd', paranoid: true
+});
+
+const ControlCenter = dbService.define('control_center', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ xorder: {type: Sequelize.INTEGER},
+ owner: {type: Sequelize.STRING},
+ pct_done: {type: Sequelize.INTEGER},
+ pct_done_acc: {type: Sequelize.INTEGER},
+ pct_done_ytd: {type: Sequelize.INTEGER},
+ type: {type: Sequelize.STRING},
+ status: {type: Sequelize.STRING},
+ amount: {type: Sequelize.DECIMAL(14,2)},
+ amount_last: {type: Sequelize.DECIMAL(14,2)},
+ amount_ytd: {type: Sequelize.DECIMAL(14,2)},
+ children_ids: {type: Sequelize.ARRAY(Sequelize.INTEGER)},
+ amount_t1: {type: Sequelize.DECIMAL(14,2)},
+ amount_t2: {type: Sequelize.DECIMAL(14,2)},
+ started_at: {type: Sequelize.DATE},
+ disabled: {type: Sequelize.BOOLEAN},
+ finished_at: {type: Sequelize.DATE},
+ cat_2nd: {type: Sequelize.STRING},
+ cat_3rd: {type: Sequelize.STRING},
+ cat_4th: {type: Sequelize.STRING},
+ name: {type: Sequelize.STRING},
+ show_title_ml: {type: Sequelize.JSON},
+ show_title: {type: Sequelize.STRING},
+ cat_1st: {type: Sequelize.STRING},
+ code: {type: Sequelize.STRING}
+}, {
+ tableName: 'control_center', timestamps: false, underscored: true, schema: 'md'
+});
+
+const ControlCenterActual = dbService.define('control_center_actual', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ t_run: {type: Sequelize.STRING},
+ type: {type: Sequelize.STRING},
+ t_time: {type: Sequelize.DATE},
+ amount: {type: Sequelize.DECIMAL(14,2)},
+ count: {type: Sequelize.INTEGER},
+ amount_avg: {type: Sequelize.DECIMAL(14,2)},
+ amount_acc: {type: Sequelize.DECIMAL(14,2)},
+ t_run_gr: {type: Sequelize.STRING},
+ amount_budget_acc: {type: Sequelize.DECIMAL(14,2)},
+ amount_budget: {type: Sequelize.DECIMAL(14,2)},
+ control_center_id: {type: Sequelize.INTEGER},
+ control_element: {type: Sequelize.STRING},
+ control_center: {type: Sequelize.STRING},
+ amount_compared: {type: Sequelize.DECIMAL(14,2)},
+ amount_compared1: {type: Sequelize.DECIMAL(14,2)},
+ amount_compared2: {type: Sequelize.DECIMAL(14,2)},
+ count_distinct: {type: Sequelize.INTEGER},
+ record_type: {type: Sequelize.STRING},
+ pct: {type: Sequelize.DECIMAL(14,2)},
+ xorder: {type: Sequelize.INTEGER},
+ status: {type: Sequelize.STRING},
+ remarks: {type: Sequelize.TEXT},
+ budget_acc_pct: {type: Sequelize.DECIMAL(14,2)},
+ budget_pct: {type: Sequelize.DECIMAL(14,2)},
+ data_set: {type: Sequelize.STRING},
+ count_pct: {type: Sequelize.DECIMAL(14,2)},
+ yoy_compared: {type: Sequelize.DECIMAL(14,2)},
+ pop_compared: {type: Sequelize.DECIMAL(14,2)},
+ control_center_pid: {type: Sequelize.INTEGER},
+ count_avg: {type: Sequelize.DECIMAL(14,2)},
+ count_p50: {type: Sequelize.DECIMAL(14,2)},
+ data_f: {type: Sequelize.ARRAY(Sequelize.INTEGER)},
+ cat_1st: {type: Sequelize.STRING},
+ cat_2nd: {type: Sequelize.STRING},
+ amount_bak: {type: Sequelize.INTEGER},
+ count_bak: {type: Sequelize.DECIMAL(14,2)}
+}, {
+ tableName: 'control_center_actual', timestamps: false, underscored: true, schema: 'md'
+});
+
+const ServiceActual = dbService.define('service_actual', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ service_id: {type: Sequelize.INTEGER},
+ t_run: {type: Sequelize.STRING},
+ type: {type: Sequelize.STRING},
+ t_time: {type: Sequelize.DATE},
+ amount: {type: Sequelize.DECIMAL(14,2)},
+ count: {type: Sequelize.INTEGER},
+ amount_avg: {type: Sequelize.DECIMAL(14,2)},
+ amount_acc: {type: Sequelize.DECIMAL(14,2)},
+ t_run_gr: {type: Sequelize.STRING},
+ amount_budget_acc: {type: Sequelize.DECIMAL(14,2)},
+ amount_budget: {type: Sequelize.DECIMAL(14,2)},
+ amount_compared: {type: Sequelize.DECIMAL(14,2)},
+ amount_compared1: {type: Sequelize.DECIMAL(14,2)},
+ amount_compared2: {type: Sequelize.DECIMAL(14,2)},
+ count_distinct: {type: Sequelize.INTEGER},
+ record_type: {type: Sequelize.STRING},
+ pct: {type: Sequelize.DECIMAL(14,2)},
+ xorder: {type: Sequelize.INTEGER},
+ ops_code: {type: Sequelize.STRING},
+ control_center_id: {type: Sequelize.INTEGER},
+ status: {type: Sequelize.STRING},
+ remarks: {type: Sequelize.TEXT},
+ service_no: {type: Sequelize.STRING},
+ control_center: {type: Sequelize.STRING},
+ data_set: {type: Sequelize.STRING},
+ count_pct: {type: Sequelize.DECIMAL(14,2)},
+ yoy_compared: {type: Sequelize.DECIMAL(14,2)},
+ pop_compared: {type: Sequelize.DECIMAL(14,2)},
+ control_center_pid: {type: Sequelize.INTEGER},
+ count_avg: {type: Sequelize.DECIMAL(14,2)},
+ count_p50: {type: Sequelize.DECIMAL(14,2)},
+ data_f: {type: Sequelize.ARRAY(Sequelize.INTEGER)},
+ cat_1st: {type: Sequelize.STRING}
+}, {
+ tableName: 'service_actual', timestamps: false, underscored: true, schema: 'sd'
+});
+
+const City = dbService.define('city', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ code: {type: Sequelize.INTEGER},
+ name: {type: Sequelize.STRING},
+ location_detail: {type: Sequelize.STRING},
+ parent_id: {type: Sequelize.INTEGER},
+ province: {type: Sequelize.STRING},
+ city: {type: Sequelize.STRING},
+ full_name: {type: Sequelize.STRING},
+ full_search_name: {type: Sequelize.STRING},
+ readable_pfids: {type: Sequelize.ARRAY(Sequelize.INTEGER)},
+ level: {type: Sequelize.STRING},
+ detail_name: {type: Sequelize.STRING},
+ full_py_name: {type: Sequelize.STRING}
+}, {
+ tableName: 'city', timestamps: false, underscored: true, freezeTableName: true, schema: 'md'
+});
+
+const EquipmentActual = dbService.define('equipment_actual', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ t_run: {type: Sequelize.STRING},
+ type: {type: Sequelize.STRING},
+ t_time: {type: Sequelize.DATE},
+ amount: {type: Sequelize.DECIMAL(14,2)},
+ count: {type: Sequelize.INTEGER},
+ amount_avg: {type: Sequelize.DECIMAL(14,2)},
+ amount_acc: {type: Sequelize.DECIMAL(14,2)},
+ t_run_gr: {type: Sequelize.STRING},
+ amount_budget_acc: {type: Sequelize.DECIMAL(14,2)},
+ amount_budget: {type: Sequelize.DECIMAL(14,2)},
+ equipment_id: {type: Sequelize.INTEGER},
+ record_type: {type: Sequelize.STRING},
+ pct: {type: Sequelize.DECIMAL(14,2)},
+ xorder: {type: Sequelize.INTEGER},
+ control_center_id: {type: Sequelize.INTEGER},
+ ops_code: {type: Sequelize.STRING},
+ status: {type: Sequelize.STRING},
+ remarks: {type: Sequelize.TEXT},
+ data_set: {type: Sequelize.STRING},
+ count_pct: {type: Sequelize.DECIMAL(14,2)},
+ yoy_compared: {type: Sequelize.DECIMAL(14,2)},
+ pop_compared: {type: Sequelize.DECIMAL(14,2)},
+ control_center_pid: {type: Sequelize.INTEGER},
+ count_avg: {type: Sequelize.DECIMAL(14,2)},
+ count_p50: {type: Sequelize.DECIMAL(14,2)},
+ data_f: {type: Sequelize.ARRAY(Sequelize.INTEGER)},
+ cat_1st: {type: Sequelize.STRING}
+}, {
+ tableName: 'equipment_actual', timestamps: false, underscored: true, schema: 'md'
+});
+
+const Entry = dbService.define('entry', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ entry_no: {type: Sequelize.STRING},
+ account_no: {type: Sequelize.STRING},
+ account_name: {type: Sequelize.STRING},
+ type: {type: Sequelize.STRING},
+ amount: {type: Sequelize.DECIMAL(14,2)},
+ status: {type: Sequelize.STRING},
+ locked_status: {type: Sequelize.STRING},
+ fin_id: {type: Sequelize.INTEGER},
+ ops_id: {type: Sequelize.INTEGER},
+ trader_id: {type: Sequelize.INTEGER},
+ trader_name: {type: Sequelize.STRING},
+ voucher_desc: {type: Sequelize.STRING},
+ posting_at: {type: Sequelize.DATE},
+ started_at: {type: Sequelize.DATE},
+ created_at: {type: Sequelize.DATE},
+ updated_at: {type: Sequelize.DATE},
+ reference_type: {type: Sequelize.STRING},
+ reference_id: {type: Sequelize.INTEGER},
+ reference_no: {type: Sequelize.STRING},
+ transaction_no: {type: Sequelize.STRING},
+ report_period: {type: Sequelize.STRING},
+ deleted_at: {type: Sequelize.DATE},
+ started_by: {type: Sequelize.STRING},
+ deleted_by: {type: Sequelize.STRING},
+ amount_sumup: {type: Sequelize.DECIMAL(14,2)},
+ related_item: {type: Sequelize.ARRAY(Sequelize.STRING)}
+}, {
+ tableName: 'entry', timestamps: true, underscored: true, schema: 'fi', paranoid: true
+});
+
+const MemberActual = dbService.define('member_actual', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ member_id: {type: Sequelize.INTEGER},
+ t_run: {type: Sequelize.STRING},
+ type: {type: Sequelize.STRING},
+ t_time: {type: Sequelize.DATE},
+ amount: {type: Sequelize.DECIMAL(14,2)},
+ count: {type: Sequelize.INTEGER},
+ amount_avg: {type: Sequelize.DECIMAL(14,2)},
+ amount_acc: {type: Sequelize.DECIMAL(14,2)},
+ t_run_gr: {type: Sequelize.STRING},
+ amount_budget_acc: {type: Sequelize.DECIMAL(14,2)},
+ amount_budget: {type: Sequelize.DECIMAL(14,2)},
+ record_type: {type: Sequelize.STRING},
+ name: {type: Sequelize.STRING},
+ count_acc: {type: Sequelize.INTEGER},
+ pct: {type: Sequelize.DECIMAL(14,2)},
+ xorder: {type: Sequelize.INTEGER},
+ status: {type: Sequelize.STRING},
+ remarks: {type: Sequelize.TEXT},
+ data_set: {type: Sequelize.STRING},
+ count_pct: {type: Sequelize.DECIMAL(14,2)},
+ yoy_compared: {type: Sequelize.DECIMAL(14,2)},
+ pop_compared: {type: Sequelize.DECIMAL(14,2)},
+ control_center_id: {type: Sequelize.INTEGER},
+ cat_1st: {type: Sequelize.STRING},
+ cat_2nd: {type: Sequelize.STRING},
+ cat_3rd: {type: Sequelize.STRING},
+ control_center_pid: {type: Sequelize.INTEGER},
+ count_avg: {type: Sequelize.DECIMAL(14,2)},
+ count_p50: {type: Sequelize.DECIMAL(14,2)},
+ data_f: {type: Sequelize.ARRAY(Sequelize.INTEGER)}
+}, {
+ tableName: 'member_actual', timestamps: false, underscored: true, schema: 'md'
+});
+
+const EntrySummary = dbService.define('entry_summary', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ fin_id: {type: Sequelize.INTEGER},
+ ops_id: {type: Sequelize.INTEGER},
+ ops_code: {type: Sequelize.STRING},
+ item: {type: Sequelize.STRING},
+ report_period: {type: Sequelize.STRING},
+ amount_init: {type: Sequelize.DECIMAL(14,2)},
+ amount: {type: Sequelize.DECIMAL(14,2)},
+ amount_actual: {type: Sequelize.DECIMAL(14,2)},
+ amount_adj: {type: Sequelize.DECIMAL(14,2)},
+ amount_ytd: {type: Sequelize.DECIMAL(14,2)},
+ amount_posted: {type: Sequelize.DECIMAL(14,2)},
+ amount_unposted: {type: Sequelize.DECIMAL(14,2)},
+ account_no: {type: Sequelize.STRING}
+}, {
+ tableName: 'entry_summary', timestamps: false, underscored: true, schema: 'fi'
+});
+
+const ControlCenterAlter = dbService.define('control_center_alter', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ t_run: {type: Sequelize.STRING},
+ type: {type: Sequelize.STRING},
+ amount_1: {type: Sequelize.DECIMAL(14,2)},
+ amount_2: {type: Sequelize.DECIMAL(14,2)},
+ pct: {type: Sequelize.DECIMAL(14,2)},
+ count: {type: Sequelize.INTEGER},
+ record_type: {type: Sequelize.STRING},
+ status: {type: Sequelize.STRING},
+ alter_type: {type: Sequelize.STRING},
+ message: {type: Sequelize.TEXT},
+ control_center_id: {type: Sequelize.INTEGER},
+ chart_1st: {type: Sequelize.STRING},
+ chart_2nd: {type: Sequelize.STRING},
+ control_center: {type: Sequelize.STRING}
+}, {
+ tableName: 'control_center_alter', timestamps: false, underscored: true, schema: 'md'
+});
+
+const ControlCenterBudget = dbService.define('control_center_budget', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ amount: {type: Sequelize.DECIMAL(14,2)},
+ disabled: {type: Sequelize.BOOLEAN},
+ control_center_id: {type: Sequelize.INTEGER},
+ started_at: {type: Sequelize.DATE},
+ finished_at: {type: Sequelize.DATE},
+ t_month: {type: Sequelize.STRING}
+}, {
+ tableName: 'control_center_budget', timestamps: false, underscored: true, schema: 'md'
+});
+
+const RmControlCenterEquipment = dbService.define('rm_control_center_equipment', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ control_center_id: {type: Sequelize.INTEGER},
+ equipment_id: {type: Sequelize.INTEGER}
+}, {
+ tableName: 'rm_control_center_equipment', timestamps: false, underscored: true, schema: 'md'
+});
+
+const Servicex = dbService.define('service', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ service_no: {type: Sequelize.STRING},
+ name: {type: Sequelize.STRING},
+ name_ml: {type: Sequelize.JSON},
+ name_en: {type: Sequelize.STRING},
+ type: {type: Sequelize.STRING},
+ disabled: {type: Sequelize.BOOLEAN},
+ control_center: {type: Sequelize.STRING},
+ depart_id: {type: Sequelize.INTEGER},
+ depart_name: {type: Sequelize.STRING},
+ destination_id: {type: Sequelize.INTEGER},
+ destination_name: {type: Sequelize.STRING},
+ distance: {type: Sequelize.INTEGER},
+ cat_1st: {type: Sequelize.STRING},
+ cat_2nd: {type: Sequelize.STRING},
+ cat_3rd: {type: Sequelize.STRING},
+ cat_4th: {type: Sequelize.STRING},
+ status: {type: Sequelize.STRING},
+ status_id: {type: Sequelize.INTEGER},
+ player_id: {type: Sequelize.INTEGER},
+ player: {type: Sequelize.STRING},
+ xorder: {type: Sequelize.INTEGER},
+ ops_code: {type: Sequelize.STRING},
+ owner: {type: Sequelize.STRING},
+ service_gr: {type: Sequelize.STRING},
+ amount: {type: Sequelize.DECIMAL(14,2)},
+ rank: {type: Sequelize.INTEGER},
+ rank_gr: {type: Sequelize.STRING},
+ parent_id: {type: Sequelize.INTEGER},
+ control_center_id: {type: Sequelize.INTEGER}
+}, {
+ tableName: 'service', timestamps: false, underscored: true, schema: 'sd'
+});
+
+const OrderSalesExtUk = dbService.define('order_sales_ext_uk', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ order_no: {type: Sequelize.STRING},
+ type: {type: Sequelize.STRING},
+ biz_code: {type: Sequelize.STRING},
+ profile_id: {type: Sequelize.INTEGER},
+ ops_id: {type: Sequelize.INTEGER},
+ fin_code: {type: Sequelize.STRING},
+ ops_code: {type: Sequelize.STRING},
+ sales_code: {type: Sequelize.STRING},
+ profile_name: {type: Sequelize.STRING},
+ trader_id: {type: Sequelize.INTEGER},
+ trader_code: {type: Sequelize.STRING},
+ trader_name: {type: Sequelize.STRING},
+ payment_method: {type: Sequelize.STRING},
+ payment_period: {type: Sequelize.STRING},
+ billing_id: {type: Sequelize.INTEGER},
+ status: {type: Sequelize.STRING},
+ processing_status: {type: Sequelize.STRING},
+ is_internal: {type: Sequelize.BOOLEAN},
+ started_at: {type: Sequelize.DATE},
+ finished_at: {type: Sequelize.DATE},
+ remarks: {type: Sequelize.STRING},
+ created_at: {type: Sequelize.DATE},
+ updated_at: {type: Sequelize.DATE},
+ deleted_at: {type: Sequelize.DATE},
+ term: {type: Sequelize.STRING},
+ billing_no: {type: Sequelize.STRING},
+ amount: {type: Sequelize.DECIMAL(14,2)},
+ biz_type: {type: Sequelize.STRING},
+ locked_status: {type: Sequelize.STRING},
+ service_no: {type: Sequelize.STRING},
+ voucher_id: {type: Sequelize.INTEGER},
+ voucher_status: {type: Sequelize.STRING},
+ reflection_id: {type: Sequelize.INTEGER},
+ control_center: {type: Sequelize.STRING},
+ related_no: {type: Sequelize.STRING},
+ control_element: {type: Sequelize.STRING},
+ is_deleted: {type: Sequelize.INTEGER},
+ billing_status: {type: Sequelize.STRING},
+ amount_acc: {type: Sequelize.DECIMAL(14,2)},
+ gross_margin: {type: Sequelize.DECIMAL(14,2)},
+ equipment_no: {type: Sequelize.STRING},
+ data_f: {type: Sequelize.DECIMAL(14,2)},
+ status_desc: {type: Sequelize.STRING},
+ bi_status: {type: Sequelize.STRING},
+ control_center_id: {type: Sequelize.INTEGER},
+ ext_iid: {type: Sequelize.INTEGER},
+ ext_cid: {type: Sequelize.STRING},
+ data_source: {type: Sequelize.STRING},
+ status_1: {type: Sequelize.STRING},
+ status_2: {type: Sequelize.STRING},
+ days_open: {type: Sequelize.INTEGER},
+ temp_1: {type: Sequelize.STRING},
+ temp_2: {type: Sequelize.STRING},
+ temp_3: {type: Sequelize.STRING},
+ status_syn: {type: Sequelize.STRING},
+ control_center_pid: {type: Sequelize.INTEGER},
+ t_run: {type: Sequelize.STRING},
+ bi_element: {type: Sequelize.STRING},
+ bi_2nd: {type: Sequelize.STRING},
+ cat_1st: {type: Sequelize.STRING},
+ cat_2nd: {type: Sequelize.STRING},
+ payment_method_cd: {type: Sequelize.STRING},
+ payment_current: {type: Sequelize.DECIMAL(14,2)},
+ payment_arrived: {type: Sequelize.DECIMAL(14,2)},
+ payment_monthly: {type: Sequelize.DECIMAL(14,2)},
+ payment_multiple: {type: Sequelize.DECIMAL(14,2)},
+ payment_arrear: {type: Sequelize.DECIMAL(14,2)},
+ payment_hdq: {type: Sequelize.DECIMAL(14,2)},
+ payment_detain_cargo: {type: Sequelize.DECIMAL(14,2)},
+ rebate_total: {type: Sequelize.DECIMAL(14,2)},
+ rebate_paid: {type: Sequelize.DECIMAL(14,2)},
+ rebate_remain: {type: Sequelize.DECIMAL(14,2)},
+ actual_charge: {type: Sequelize.DECIMAL(14,2)},
+ cargo_name: {type: Sequelize.STRING},
+ cargo_weight: {type: Sequelize.DECIMAL(14,2)},
+ cargo_volumn: {type: Sequelize.DECIMAL(14,2)},
+ cargo_count: {type: Sequelize.INTEGER},
+ carrier_id: {type: Sequelize.INTEGER},
+ carrier_code: {type: Sequelize.STRING},
+ carrier_name: {type: Sequelize.STRING},
+ sub_order_no: {type: Sequelize.STRING},
+ service_amount: {type: Sequelize.DECIMAL(14,2)},
+ other_amount1: {type: Sequelize.DECIMAL(14,2)},
+ other_amount2: {type: Sequelize.DECIMAL(14,2)},
+ depart_branch_id: {type: Sequelize.INTEGER},
+ depart_branch: {type: Sequelize.STRING},
+ target_branch_id: {type: Sequelize.INTEGER},
+ target_branch: {type: Sequelize.STRING}
+}, {
+ tableName: 'order_sales_ext_uk', timestamps: true, underscored: true, schema: 'sd', paranoid: true
+});
+
+const OrderOpsExtKh = dbService.define('order_ops_ext_kh', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ order_no: {type: Sequelize.STRING},
+ type: {type: Sequelize.STRING},
+ biz_code: {type: Sequelize.STRING},
+ profile_id: {type: Sequelize.INTEGER},
+ ops_id: {type: Sequelize.INTEGER},
+ fin_code: {type: Sequelize.STRING},
+ ops_code: {type: Sequelize.STRING},
+ sales_code: {type: Sequelize.STRING},
+ profile_name: {type: Sequelize.STRING},
+ trader_id: {type: Sequelize.INTEGER},
+ trader_code: {type: Sequelize.STRING},
+ trader_name: {type: Sequelize.STRING},
+ payment_method: {type: Sequelize.STRING},
+ payment_period: {type: Sequelize.STRING},
+ billing_id: {type: Sequelize.INTEGER},
+ status: {type: Sequelize.STRING},
+ processing_status: {type: Sequelize.STRING},
+ is_internal: {type: Sequelize.BOOLEAN},
+ started_at: {type: Sequelize.DATE},
+ finished_at: {type: Sequelize.DATE},
+ remarks: {type: Sequelize.STRING},
+ created_at: {type: Sequelize.DATE},
+ updated_at: {type: Sequelize.DATE},
+ deleted_at: {type: Sequelize.DATE},
+ term: {type: Sequelize.STRING},
+ billing_no: {type: Sequelize.STRING},
+ amount: {type: Sequelize.DECIMAL(14,2)},
+ biz_type: {type: Sequelize.STRING},
+ locked_status: {type: Sequelize.STRING},
+ service_no: {type: Sequelize.STRING},
+ voucher_id: {type: Sequelize.INTEGER},
+ voucher_status: {type: Sequelize.STRING},
+ reflection_id: {type: Sequelize.INTEGER},
+ control_center: {type: Sequelize.STRING},
+ related_no: {type: Sequelize.STRING},
+ control_element: {type: Sequelize.STRING},
+ is_deleted: {type: Sequelize.INTEGER},
+ billing_status: {type: Sequelize.STRING},
+ amount_acc: {type: Sequelize.DECIMAL(14,2)},
+ gross_margin: {type: Sequelize.DECIMAL(14,2)},
+ equipment_no: {type: Sequelize.STRING},
+ data_f: {type: Sequelize.DECIMAL(14,2)},
+ status_desc: {type: Sequelize.STRING},
+ bi_status: {type: Sequelize.STRING},
+ control_center_id: {type: Sequelize.INTEGER},
+ ext_iid: {type: Sequelize.INTEGER},
+ ext_cid: {type: Sequelize.STRING},
+ distance: {type: Sequelize.INTEGER},
+ ops_method: {type: Sequelize.STRING},
+ ops_owner: {type: Sequelize.STRING},
+ route_id: {type: Sequelize.INTEGER},
+ status_syn: {type: Sequelize.STRING},
+ control_center_pid: {type: Sequelize.INTEGER},
+ t_run: {type: Sequelize.STRING},
+ bi_element: {type: Sequelize.STRING},
+ bi_2nd: {type: Sequelize.STRING},
+ cat_1st: {type: Sequelize.STRING},
+ cat_2nd: {type: Sequelize.STRING}
+}, {
+ tableName: 'order_ops_ext_kh', timestamps: true, underscored: true, schema: 'sd', paranoid: true
+});
+
+const MemberContract = dbService.define('member_contract', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ member_id: {type: Sequelize.INTEGER},
+ service_id: {type: Sequelize.INTEGER},
+ employee_id: {type: Sequelize.INTEGER},
+ type: {type: Sequelize.STRING},
+ round_trip: {type: Sequelize.STRING},
+ quantity: {type: Sequelize.INTEGER},
+ unit_price: {type: Sequelize.DECIMAL(14,2)},
+ started_at: {type: Sequelize.DATE},
+ finished_at: {type: Sequelize.DATE},
+ created_at: {type: Sequelize.DATE},
+ updated_at: {type: Sequelize.DATE},
+ deleted_at: {type: Sequelize.DATE},
+ disabled: {type: Sequelize.BOOLEAN},
+ remarks: {type: Sequelize.STRING},
+ member_name: {type: Sequelize.STRING},
+ service_name: {type: Sequelize.STRING},
+ employee_name: {type: Sequelize.STRING}
+}, {
+ tableName: 'member_contract', timestamps: true, underscored: true, schema: 'md', paranoid: true
+});
+
+const CubeData = dbService.define('cube_data', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ cube_no: {type: Sequelize.STRING},
+ t_run: {type: Sequelize.STRING},
+ service_no: {type: Sequelize.STRING},
+ cat_1st: {type: Sequelize.STRING},
+ cat_2nd: {type: Sequelize.STRING},
+ fin_code: {type: Sequelize.STRING},
+ ops_code: {type: Sequelize.STRING},
+ sales_code: {type: Sequelize.STRING},
+ trader_no: {type: Sequelize.STRING},
+ trader_name: {type: Sequelize.STRING},
+ employee_no: {type: Sequelize.STRING},
+ employee_name: {type: Sequelize.STRING},
+ biz_code: {type: Sequelize.STRING},
+ control_center: {type: Sequelize.STRING},
+ control_element: {type: Sequelize.STRING},
+ cat_3rd: {type: Sequelize.STRING},
+ cat_4th: {type: Sequelize.STRING},
+ cat_5th: {type: Sequelize.STRING},
+ t_time: {type: Sequelize.DATE},
+ count: {type: Sequelize.INTEGER},
+ count_distinct: {type: Sequelize.INTEGER},
+ amount: {type: Sequelize.FLOAT},
+ pct: {type: Sequelize.FLOAT},
+ pct_acc: {type: Sequelize.FLOAT},
+ data_i: {type: Sequelize.INTEGER},
+ data_f: {type: Sequelize.FLOAT},
+ data_af: {type: Sequelize.ARRAY(Sequelize.FLOAT)},
+ data_ai: {type: Sequelize.ARRAY(Sequelize.INTEGER)},
+ data_i1: {type: Sequelize.INTEGER},
+ data_f1: {type: Sequelize.FLOAT},
+ remarks: {type: Sequelize.STRING},
+ xorder: {type: Sequelize.INTEGER},
+ control_center_id: {type: Sequelize.INTEGER},
+ profile_id: {type: Sequelize.INTEGER},
+ trader_id: {type: Sequelize.INTEGER}
+}, {
+ tableName: 'cube_data', timestamps: false, underscored: true, schema: 'bi'
+});
+
+const ChartData = dbService.define('chart_data', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ cube_no: {type: Sequelize.STRING},
+ chart_no: {type: Sequelize.STRING},
+ t_run: {type: Sequelize.STRING},
+ service_no: {type: Sequelize.STRING},
+ cat_1st: {type: Sequelize.STRING},
+ cat_2nd: {type: Sequelize.STRING},
+ fin_code: {type: Sequelize.STRING},
+ ops_code: {type: Sequelize.STRING},
+ sales_code: {type: Sequelize.STRING},
+ trader_no: {type: Sequelize.STRING},
+ trader_name: {type: Sequelize.STRING},
+ employee_no: {type: Sequelize.STRING},
+ employee_name: {type: Sequelize.STRING},
+ biz_code: {type: Sequelize.STRING},
+ control_center: {type: Sequelize.STRING},
+ temp_char: {type: Sequelize.STRING},
+ control_element: {type: Sequelize.STRING},
+ cat_3rd: {type: Sequelize.STRING},
+ cat_4th: {type: Sequelize.STRING},
+ cat_5th: {type: Sequelize.STRING},
+ t_time: {type: Sequelize.DATE},
+ count: {type: Sequelize.INTEGER},
+ count_distinct: {type: Sequelize.INTEGER},
+ amount: {type: Sequelize.FLOAT},
+ pct: {type: Sequelize.FLOAT},
+ pct_acc: {type: Sequelize.FLOAT},
+ data_i: {type: Sequelize.INTEGER},
+ data_f: {type: Sequelize.FLOAT},
+ data_af: {type: Sequelize.ARRAY(Sequelize.FLOAT)},
+ data_ai: {type: Sequelize.ARRAY(Sequelize.INTEGER)},
+ data_i1: {type: Sequelize.INTEGER},
+ data_f1: {type: Sequelize.FLOAT},
+ remarks: {type: Sequelize.STRING},
+ xorder: {type: Sequelize.INTEGER},
+ amount_avg: {type: Sequelize.DECIMAL(14,2)},
+ amount_acc: {type: Sequelize.DECIMAL(14,2)},
+ control_center_id: {type: Sequelize.INTEGER},
+ profile_id: {type: Sequelize.INTEGER},
+ chart_title: {type: Sequelize.STRING},
+ type: {type: Sequelize.STRING},
+ record_type: {type: Sequelize.STRING}
+}, {
+ tableName: 'chart_data', timestamps: false, underscored: true, schema: 'bi'
+});
+
+const ChartTitle = dbService.define('chart_title', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ code: {type: Sequelize.STRING},
+ show_title: {type: Sequelize.STRING},
+ title_desc: {type: Sequelize.STRING}
+}, {
+ tableName: 'chart_title', timestamps: false, underscored: true, schema: 'bi'
+});
+
+const Mutations = dbService.define('mutations', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ model_id: {type: Sequelize.INTEGER},
+ model_name: {type: Sequelize.STRING},
+ user_id: {type: Sequelize.INTEGER},
+ user_name: {type: Sequelize.STRING},
+ created_at: {type: Sequelize.DATE},
+ type: {type: Sequelize.STRING},
+ content: {type: Sequelize.JSON},
+ obj_id: {type: Sequelize.INTEGER},
+ criteria: {type: Sequelize.JSON},
+ obj_cid: {type: Sequelize.STRING},
+ updated_at: {type: Sequelize.DATE}
+}, {
+ tableName: 'mutations', timestamps: true, underscored: true, schema: 'ss'
+});
+
+const RmControlCenterProfile = dbService.define('rm_control_center_profile', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ profile_id: {type: Sequelize.INTEGER},
+ control_center_id: {type: Sequelize.INTEGER},
+ cat_2nd: {type: Sequelize.STRING},
+ cat_1st: {type: Sequelize.STRING},
+ client_id: {type: Sequelize.INTEGER},
+ disabled: {type: Sequelize.BOOLEAN},
+ started_at: {type: Sequelize.DATE},
+ finished_at: {type: Sequelize.DATE},
+ client_name: {type: Sequelize.STRING}
+}, {
+ tableName: 'rm_control_center_profile', timestamps: false, underscored: true, schema: 'md'
+});
+
+const Profile = dbService.define('profile', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ name: {type: Sequelize.STRING},
+ name_ml: {type: Sequelize.JSON},
+ name_en: {type: Sequelize.STRING},
+ profile_no: {type: Sequelize.STRING},
+ type: {type: Sequelize.STRING},
+ status: {type: Sequelize.STRING},
+ fin_code: {type: Sequelize.STRING},
+ sales_code: {type: Sequelize.STRING},
+ ops_code: {type: Sequelize.STRING},
+ started_at: {type: Sequelize.DATE},
+ finished_at: {type: Sequelize.DATE},
+ created_at: {type: Sequelize.DATE},
+ updated_at: {type: Sequelize.DATE},
+ deleted_at: {type: Sequelize.DATE},
+ locked_status: {type: Sequelize.STRING},
+ icon: {type: Sequelize.STRING},
+ name_abbr: {type: Sequelize.STRING},
+ cat_1st: {type: Sequelize.STRING},
+ cat_2nd: {type: Sequelize.STRING},
+ cat_3rd: {type: Sequelize.STRING},
+ ext_iid: {type: Sequelize.INTEGER},
+ is_fin_code: {type: Sequelize.BOOLEAN},
+ is_biz_code: {type: Sequelize.BOOLEAN},
+ biz_code_type: {type: Sequelize.STRING, defaultValue: 'ops_code'},
+ biz_code_sub_type: {type: Sequelize.STRING},
+ types: {type: Sequelize.ARRAY(Sequelize.STRING)},
+ biz_codes: {type: Sequelize.ARRAY(Sequelize.INTEGER)},
+ full_name: {type: Sequelize.STRING},
+ grade: {type: Sequelize.STRING},
+ readable: {type: Sequelize.ARRAY(Sequelize.INTEGER)},
+ parent_id: {type: Sequelize.INTEGER},
+ created_by: {type: Sequelize.STRING},
+ city_id: {type: Sequelize.INTEGER},
+ fin_id: {type: Sequelize.INTEGER},
+ ops_id: {type: Sequelize.INTEGER},
+ sales_id: {type: Sequelize.INTEGER},
+ address: {type: Sequelize.STRING},
+ sys_client_id: {type: Sequelize.INTEGER},
+ uid: {type: Sequelize.STRING},
+ control_ids: {type: Sequelize.ARRAY(Sequelize.INTEGER)},
+ concerning_ids: {type: Sequelize.ARRAY(Sequelize.INTEGER)}
+}, {
+ tableName: 'profile', timestamps: true, underscored: true, schema: 'md', paranoid: true
+});
+
+const LoginHistory = dbService.define('login_history', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ user_id: {type: Sequelize.INTEGER},
+ login_name: {type: Sequelize.STRING},
+ host_name: {type: Sequelize.STRING},
+ login_time: {type: Sequelize.DATE}
+}, {
+ tableName: 'login_history', timestamps: false, underscored: true, schema: 'ss'
+});
+
+const ControlCenterStatus = dbService.define('control_center_status', {
+ id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+ control_center_id: {type: Sequelize.INTEGER},
+ status: {type: Sequelize.STRING},
+ started_at: {type: Sequelize.DATE},
+ finished_at: {type: Sequelize.DATE},
+ remarks: {type: Sequelize.STRING},
+ term: {type: Sequelize.STRING},
+ control_center: {type: Sequelize.STRING}
+}, {
+ tableName: 'control_center_status', timestamps: false, underscored: true, schema: 'md'
+});
+
+ControlCenterRm.belongsTo(ControlCenter, {as: 'SubCenter', foreignKey: 'children_id', constraints: false});
+ControlCenterRm.belongsTo(ControlCenter, {as: 'Parent', foreignKey: 'control_center_id', constraints: false});
+ControlCenter.hasOne(ControlCenterRm, {as: 'LineParent', through: {scope: {rm_type: 'line'}}, foreignKey: 'children_id', constraints: false, scope: {rm_type: 'line'}});
+ControlCenter.belongsToMany(ControlCenter, {as: 'Children', through: {model: 'control_center_rm', unique: false}, foreignKey: 'control_center_id', otherKey: 'children_id', constraints: false});
+ControlCenter.hasMany(ControlCenterBudget, {as: 'ControlCenterBudget', foreignKey: 'control_center_id', constraints: false});
+ControlCenter.hasMany(Servicex, {as: 'Servicex', foreignKey: 'control_center_id', constraints: false});
+ControlCenter.hasMany(ControlCenterActual, {as: 'ControlCenterActual', foreignKey: 'control_center_id', constraints: false});
+ControlCenter.hasOne(ControlCenterRm, {as: 'CityParent', through: {scope: {rm_type: 'city'}}, foreignKey: 'children_id', constraints: false, scope: {rm_type: 'city'}});
+
+export { Pricing, ControlCenterAlterType, OrderSalesExtKh, MemberCatService, SessionLog, FinCodeActual, Account, ControlCenterRm, RmExtOrderBilling, OpsCodeActual, FieldOption, ElementAuth, SignClientDayMonitoring, OrderOpsExtUk, ControlCenter, ControlCenterActual, ServiceActual, City, EquipmentActual, Entry, MemberActual, EntrySummary, ControlCenterAlter, ControlCenterBudget, RmControlCenterEquipment, Servicex, OrderSalesExtUk, OrderOpsExtKh, MemberContract, CubeData, ChartData, ChartTitle, Mutations, RmControlCenterProfile, Profile, LoginHistory, ControlCenterStatus };
+
+//  2018-01-29 11:04:50.534518+00

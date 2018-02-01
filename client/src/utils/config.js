@@ -1,0 +1,31 @@
+module.exports = {
+  name: 'TDH-BI',
+  prefix: '天地汇商业分析管理',
+  footerText: '上海天地汇投资管理有限公司 © 2017',
+  logo: 'https://t.alipayobjects.com/images/T1QUBfXo4fXXXXXXXX.png',
+  iconFontUrl: '//at.alicdn.com/t/font_c4y7asse3q1cq5mi.js',
+  baseURL: 'http://localhost:8080',
+  gqlSubscriptionURL: 'ws://localhost:8090',
+ // baseURL: 'http://123.59.72.168:8080',
+  //gqlSubscriptionURL: 'ws://123.59.72.168:8090',
+  gqlSubscription: false,
+  gqlSubscriptionAuthToken: '!secret@',
+  openPages: ['/login'],
+  apiPrefix: '/_api',
+  gqlPrefix: '/graphql',
+  baseExcelExportUrl:'/_api/excel/exportExcel',
+  exportRole:['admin', 'headoffice_kh_excel'],
+  api: {
+    userLogin: '/public/login',
+    userLogout: '/user/logout',
+    userInfo: '/user/info',
+    userList: '/user/list',
+    userAdd: '/user/add',
+    userRemove: '/user/remove',
+    userUpdate: '/user/update',
+    menu: '/user/menu',
+    dashboard: '/user/dashboard',
+    excel:'/excel'
+  },
+}
+
