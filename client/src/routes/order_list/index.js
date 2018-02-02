@@ -4,7 +4,8 @@ import { compose, gql, graphql } from 'react-apollo';
 import { connect } from 'dva';
 import moment from 'moment';
 import _ from 'lodash';
-import { Spin, Input, Tooltip, Icon, Button, Row, Col, Badge, Popover, DatePicker, message, Tabs, Checkbox, Table, Form, Popconfirm, Card, Modal, Check, Select, InputNumber, Radio, Tag} from 'antd';
+import { Spin, Input, Tooltip, Icon, Button, Row, Col, Badge, Popover, DatePicker, message, Tabs, Checkbox, Table, Form, Popconfirm, Card, Modal, Check,
+  Select, InputNumber, Radio, Tag} from 'antd';
 import {formatter, getAllValuesFromRecord, color, getDistinctValues} from '../../utils';
 import stylesShared from '../../utils/table.less';
 import { DropOption, SearchInput } from '../../components';
@@ -443,6 +444,7 @@ const columns = [{
       <Input.Group compact size="large">
           <Tooltip title="导出到Excel"><Button style={{ fontSize: '14px',display:isShowExport }} size={'large'} onClick={doExport} ><Icon type="download" style={{fontSize: '16px'}}/>导出</Button></Tooltip>
          <Tooltip title="输入查询参数，从服务器获取数据"><Button style={{ fontSize: '14px' }} size={'large'} onClick={openFetchModal}><Icon type="cloud-download" style={{fontSize: '16px'}}/></Button></Tooltip>
+
       </Input.Group>
      )
   }
@@ -475,7 +477,7 @@ const columns = [{
         payload: {detailedInfoVisible: !detailedInfoVisible},
       })
     },
-    doExport(e){
+   /* doExport(e){
     var excelId = 'orderListKHTotal';
 
 
@@ -522,8 +524,62 @@ const columns = [{
     //url=url+'&dateLt='+fetchProps.started_at[1]+'&dateGt='+fetchProps.started_at[0];
     url=url+'&'+qs.stringify(paramObj);
 
-    window.open(url);
-  }
+   window.open(url);
+
+
+  }*/
+
+    doExport(e){
+      var excelId = 'orderListKHTotal';
+
+      var url = config.baseURL+config.baseExcelExportUrl+'?excelId='+excelId;
+
+      /*
+      var paramObj = {};
+      if(fetchProps.order_no){
+        //url=url+'&order_no='+fetchProps.order_no;
+        paramObj.order_no=fetchProps.order_no;
+      }
+
+      if(fetchProps.trader_name){
+        //url = url+'&trader_name='+fetchProps.trader_name
+        paramObj.trader_name=fetchProps.trader_name;
+      }
+
+      if(fetchProps.service_no){
+        //url=url+'&service_no='+fetchProps.service_no;
+        paramObj.service_no=fetchProps.service_no;
+      }
+
+      if(fetchProps.fin_code){
+        //url = url+'&fin_code='+fetchProps.fin_code
+        paramObj.fin_code=fetchProps.fin_code;
+      }
+
+      if(fetchProps.ops_code){
+        //url=url+'&ops_code='+fetchProps.ops_code;
+        paramObj.ops_code=fetchProps.ops_code;
+      }
+
+      if(fetchProps.billing_no){
+       // url = url+'&billing_no='+fetchProps.billing_no
+        paramObj.billing_no=fetchProps.billing_no;
+      }
+
+      //add default param
+      if(!fetchProps.started_at[1] || !fetchProps.started_at[0]){
+        console.log('--------- 没选择日期 --------------');
+        return false;
+      }
+
+      paramObj.dateLt=fetchProps.started_at[1];
+      paramObj.dateGt=fetchProps.started_at[0];
+      //url=url+'&dateLt='+fetchProps.started_at[1]+'&dateGt='+fetchProps.started_at[0];
+      url=url+'&'+qs.stringify(paramObj);
+      */
+      url=url+'&'+qs.stringify(fetchProps);
+      window.open(url);
+    }
 
   };
 
@@ -553,6 +609,7 @@ const columns = [{
     <Row style={{ marginBottom: 10 }}>
       <Col lg={15} md={24}>
         <KeyFuncTable {...keyFuncTableProps}/>
+        <FetchPropsModalGene/>
       </Col>
       <Col lg={9} md={24} style={{textAlign: 'right'}}>
         <SearchInput {...searchGroupProps}/>
@@ -560,7 +617,8 @@ const columns = [{
     </Row>
   <TableMasterActive {...tableMasterProps}/>
   </Card>
-  <FetchPropsModalGene/>
+
+
 
   </div>
   )

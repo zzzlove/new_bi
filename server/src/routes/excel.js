@@ -3,7 +3,7 @@ import { configService, gqlService } from '../service';
 import { InvoiceFin, FinInvoiceManual } from '../sql';
 import exportConfig from '../exportConfig';
 import nodeExcel from 'excel-export';
-
+/*import moment from 'moment';*/
 
 var supportSubscription = configService.get('gqlConfig.supportSubscription');
 const subscriptionAuthWithConnectionParams = configService.get('gqlConfig.subscriptionAuthWithConnectionParams');
@@ -98,9 +98,29 @@ function handleExcelRoutes(httpServer) {
 
     httpServer.get('/_api/excel/exportExcel', function (req, res) {
         var param1 = req.query.excelId;
-        var whereReq ;
+        var whereReq={};
+//        var whereRawReq={};
         if(req.query){
-            whereReq={};
+            //whereReq={};
+            //whereRawReq={};
+            for(var paramProp in req.query){
+                if(paramProp != 'excelId'){
+                    //control_center 支持模糊查询
+                    if(paramProp == 'control_center'){
+                        whereReq[paramProp] = {};
+                        whereReq[paramProp]['$like'] =  req.query[paramProp];
+                    }else if(paramProp == 'started_at'){//日期区间
+                       // whereReq['started_at'] = {};
+                        whereReq['started_at'] = {$gte: parseInt(req.query[paramProp][0]), $lte: parseInt(req.query[paramProp][1])}; 
+                       // whereRawReq['started_at'] = {$gte: moment(parseInt(req.query[paramProp][0])).format('YYYY-MM-DD HH:MM'), $lte: moment(parseInt(req.query[paramProp][1])).format('YYYY-MM-DD HH:MM')}; 
+                       // whereReq['started_at']['$gte'] =  parseInt(req.query[paramProp][0]);
+                       // whereReq['started_at']['$lte'] =  parseInt(req.query[paramProp][1]);
+                    }else{
+                        whereReq[paramProp] = req.query[paramProp];
+                    }
+                }
+            }      
+            /*
             for(var paramProp in req.query){
                 if(paramProp != 'excelId'){
                     //control_center 支持模糊查询
@@ -117,14 +137,18 @@ function handleExcelRoutes(httpServer) {
                     }
                 }
             }
+            */
         }
         var config = exportConfig[param1];
-
+        console.log('**** req.query ****');
+        console.log(req.query);
         console.log('**** Excel Export post: **** param & config & where');
         console.log(param1);
         console.log(config);
+        console.log('**** whereReq *****');
         console.log(whereReq);
 
+        
         var user = req.user;
         console.log('xxx: ' + JSON.stringify(user));
 
@@ -193,10 +217,10 @@ function handleExcelRoutes(httpServer) {
                                 return function (row, cellData, eOpt) {
                                     if (cellData === null) {
                                         eOpt.cellType = 'string';
-                                        return 'N/A';
+                                        return '';  // 原 return 'N/A';
                                     } else
-                                        return (cellData - originDate + 8*60*60*1000) / (24 * 60 * 60 * 1000); //北京时间为UTC标准时间+8小时
-                                    //return cellData ;
+                                      return (cellData - originDate + 8*60*60*1000) / (24 * 60 * 60 * 1000); //北京时间为UTC标准时间+8小时
+                                    // return moment(cellData).format('YYYY-MM-DD HH:MM');
                                 }
                             }();
                         }
